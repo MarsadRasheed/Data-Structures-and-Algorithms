@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+// Creating a node class
+
+class node {
+public:
+	int data;
+	node* next;
+};
+
+// Creating LinkedList Class
+
+class LinkedList {
+private:
+	node* head;
+	node* tail;
+public:
+	LinkedList() {
+		head = NULL;
+		tail = NULL;
+	}
+
+	void insertionAtTail(int n);
+	void insertionAtHead(int n);
+	void deletion(int n);
+	bool search(int n);
+	void print();
+	void sort();
+	void deleteAtHead();
+	void deleteAtTail();
+	void delete_node(int num);
+};
+
+// function for deleting node using value
+
+void LinkedList::delete_node(int num) {
+	
+	node* current;
+	current = head;
+
+	node* previous;
+	previous = head;
+
+	while (current != NULL){
+		if (current->data == num) {
+			previous->next = current->next;
+		}
+		previous = current;
+		current = current->next;
+	}
+}
