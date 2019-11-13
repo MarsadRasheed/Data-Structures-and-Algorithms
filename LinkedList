@@ -50,3 +50,23 @@ void LinkedList::delete_node(int num) {
 		current = current->next;
 	}
 }
+
+bool LinkedList :: search(int n) {
+
+	node* ptr;
+	ptr = head;
+	if (ptr == NULL) {
+		cout << "\nyour list is empty.\n";
+	}
+	else {
+		while (ptr != NULL) {
+			if (ptr->data == n) {
+				cout << "\nGiven number is in the list ."<<endl;
+				return true;
+			}
+			ptr = ptr->next;
+		}
+		cout << "\nGiven number is not found in the list ."<<endl;
+		return false;
+	}
+}
