@@ -29,12 +29,12 @@ public:
 	void sort();
 	void deleteAtHead();
 	void deleteAtTail();
-	void delete_node(int num);
+	void deleteNode(int num);
 };
 
-// function for deleting node using value
+// function defination for deleting node using value
 
-void LinkedList::delete_node(int num) {
+void LinkedList::deleteNode(int num) {
 	
 	node* current;
 	current = head;
@@ -50,6 +50,8 @@ void LinkedList::delete_node(int num) {
 		current = current->next;
 	}
 }
+
+// function defination for searching number in LinkedList 
 
 bool LinkedList :: search(int n) {
 
@@ -70,3 +72,41 @@ bool LinkedList :: search(int n) {
 		return false;
 	}
 }
+
+
+// Function defination for printing LinkedList
+
+void LinkedList::print() {
+	node* ptr;
+	ptr = head;
+	if (ptr == NULL) {
+		cout << "\nYour list is empty.\n";
+	}
+	else {
+		while (ptr != NULL) {
+			cout << ptr->data << "  ";
+			ptr = ptr->next;
+		}
+	}
+}
+
+// Func defination for Insertioin at Tail in LinkedList
+
+void LinkedList :: insertionAtTail(int n) {
+
+	node* tptr;
+	tptr = head;
+
+	node* temp = new node;
+	temp->data = n;
+	temp->next = NULL;
+
+	if (head == NULL) {
+		head = temp;
+		tail = temp;
+	}
+	else {
+			tail->next = temp;
+			tail = temp;
+	}
+}  
