@@ -110,3 +110,33 @@ void LinkedList :: insertionAtTail(int n) {
 			tail = temp;
 	}
 }  
+
+
+// Func defination for Insertion at Head of LinkedList
+
+void LinkedList::insertionAtHead(int n) {
+	node* tptr ;
+	tptr = head;
+
+	node* temp = new node;
+	temp->data = n;
+	temp->next = NULL;
+
+	if (head == NULL) {
+		head = temp;
+		tail = temp;
+	}
+	else {
+		temp->next = head;
+		head = temp;
+	}
+}
+
+// Func defintaion for delete element from the beginning of the LinkedList
+
+void LinkedList::deleteAtHead(){
+	node* nod;
+	nod = head;
+	head = head->next;
+	delete nod;
+}
