@@ -132,7 +132,7 @@ void LinkedList::insertionAtHead(int n) {
 	}
 }
 
-// Func defintaion for delete element from the beginning of the LinkedList
+// Func defintaion for delete element from the beginning of the LinkedList 
 
 void LinkedList::deleteAtHead(){
 	node* nod;
