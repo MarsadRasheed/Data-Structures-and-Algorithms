@@ -140,3 +140,22 @@ void LinkedList::deleteAtHead(){
 	head = head->next;
 	delete nod;
 }
+
+// Func defination for delete element from the end of the LinkedList
+
+void LinkedList::deleteAtTail() {
+
+	node* current;
+	node* previous;
+
+	current = head;
+	previous = tail;
+
+	while (current->next != NULL) {
+		previous = current;
+		current = current->next;
+	}
+	tail = previous;
+	previous->next = NULL;
+	delete current;
+}
