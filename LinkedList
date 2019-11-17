@@ -159,3 +159,29 @@ void LinkedList::deleteAtTail() {
 	previous->next = NULL;
 	delete current;
 }
+
+// func defination for sorting in ascending order
+
+void LinkedList::sort() {
+	
+	node* previous = head;
+	node* current = head;
+
+	current = current->next;
+
+	while ( current != NULL)
+	{
+		previous = head;
+		while (previous != NULL) {
+			if (previous->data > current->data) {
+				int temp = current->data;
+				current->data = previous->data;
+				previous->data = temp;
+			}
+			else {
+				previous = previous->next;
+			}
+		}
+		current = current->next;
+	}
+}
