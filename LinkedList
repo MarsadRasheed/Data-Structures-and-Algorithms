@@ -185,3 +185,76 @@ void LinkedList::sort() {
 		current = current->next;
 	}
 }
+
+
+int main() {
+
+	LinkedList L;
+	int choice,element,insertChoice,index;
+	int searchIndex;
+	
+	do {
+		cout << "\n1.  Add." << endl;
+		cout << "2.  Remove. " << endl;
+		cout << "3.  Search. " << endl;
+		cout << "4.  Print. " << endl;
+		cout << "5.  Sort. " << endl;
+		cout << "6.  Exit ." << endl;
+
+		cout << "\nEnter your choice : ";
+		cin >> choice;
+
+		// Switch statement for various conditions
+
+		switch (choice)
+		{
+		case(1):
+			cout << " 1. Insertion at head. " << endl;
+			cout << " 2. Insertion at tail. " << endl;
+			cin >> insertChoice;
+			if (insertChoice == 1) {
+				cout << "Enter element to insert in list : ";
+				cin >> element;
+				L.insertionAtHead(element);
+				break;
+			}
+			else if (insertChoice == 2) {
+				cout << "Enter element to insert in list : ";
+				cin >> element;
+				L.insertionAtTail(element);
+				break;
+			}
+		case(2):
+			cout << "\n";
+			L.print();
+			cout << "Enter index to remove from list : ";
+			cin >> index;
+			L.deletion(index);
+			break;
+		case(3):
+			cout << "Enter element to search in list : ";
+			cin >> searchIndex;
+			L.search(searchIndex);
+			break;
+		case(4):
+			cout << "\nShowing results . \n" << endl;
+			L.print();
+			cout << "\n";
+			break;
+		case(5):
+			cout << "\nShowig resuts for sorted list . \n" << endl;
+			L.sort();
+			L.print();
+			cout << "\n";
+			break;
+		case(6):
+			break;
+		default:
+			cout << "INVALID INPUT TYPE!!";
+			break;
+		}
+	} while (choice != 6);
+	
+	system("pause");
+	return 0;
+}
