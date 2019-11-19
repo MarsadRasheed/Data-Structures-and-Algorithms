@@ -30,6 +30,7 @@ public:
 	void deleteAtHead();
 	void deleteAtTail();
 	void deleteNode(int num);
+	void deleteIndex(int pos);
 };
 
 // function defination for deleting node using value
@@ -184,6 +185,24 @@ void LinkedList::sort() {
 		}
 		current = current->next;
 	}
+}
+
+// function for delete any node from position
+
+void LinkedList::deleteIndex(int position) {
+	node* previous;
+	previous = head;
+
+	node* current;
+	current = head;
+
+	for (int i = 0; i < position - 1; i++) {
+		previous = current;
+		current = current->next;
+	}
+
+	previous->next = current->next;
+	delete current;
 }
 
 
