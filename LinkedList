@@ -32,6 +32,7 @@ public:
 	void deleteNode(int num);
 	void deleteIndex(int pos);
 	void insertionAt(int position, int num);
+	void updateValue(int position, int num);
 };
 
 // function defination for deleting node using value
@@ -222,6 +223,17 @@ void LinkedList::insertionAt(int position, int num) {
 	current = previous->next;
 	previous->next = temp;
 	temp->next = current;
+}
+
+
+void LinkedList::updateValue(int position, int num) {
+	node* temp;
+	temp = head;
+
+	for (int i = 0; i < position - 1; i++) {
+		temp = temp->next;
+	}
+	temp->data = num;
 }
 
 
