@@ -33,6 +33,9 @@ public:
 	void deleteIndex(int pos);
 	void insertionAt(int position, int num);
 	void updateValue(int position, int num);
+	int getTailData();	
+	int getHeadData();
+	void reverseList();
 };
 
 // function defination for deleting node using value
@@ -207,6 +210,8 @@ void LinkedList::deleteIndex(int position) {
 	delete current;
 }
 
+// function for insertion at a particular index
+
 void LinkedList::insertionAt(int position, int num) {
 	node* previous;
 	previous = head;
@@ -225,6 +230,7 @@ void LinkedList::insertionAt(int position, int num) {
 	temp->next = current;
 }
 
+// function to update value of any index
 
 void LinkedList::updateValue(int position, int num) {
 	node* temp;
@@ -234,6 +240,41 @@ void LinkedList::updateValue(int position, int num) {
 		temp = temp->next;
 	}
 	temp->data = num;
+}
+
+// function to get data of head
+
+int LinkedList::getHeadData() {
+	return head->data;
+}
+
+// function to get data of tail
+
+int LinkedList::getTailData() {
+	return tail->data;
+}
+
+// function to reverse linked list
+
+void LinkedList::reverseList() {
+
+	node* current;
+	current	= head;
+
+	node* previous;
+	previous = NULL;
+
+	node* next;
+	next = NULL;
+
+	while (current != NULL) {
+		next = current->next;
+		current->next = previous;
+
+		previous = current;
+		current = next;
+	}
+	 head = previous;
 }
 
 
