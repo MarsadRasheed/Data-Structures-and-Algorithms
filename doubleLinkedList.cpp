@@ -79,3 +79,45 @@ void DoubleLinkedList::printList() {
 	}
 }
 
+// function for insertion at tail
+
+void DoubleLinkedList::insertionAtTail(int num)
+{
+	node* temp = new node;
+	temp->data = num;
+	temp->next = NULL;
+	temp->previous = NULL;
+
+	if (head == NULL) {
+		head = temp;
+		tail = temp;
+	}
+
+	tail->next = temp;
+	temp->previous = tail;
+	temp->next = NULL;
+	tail = temp;
+}
+
+// function to insert at any position
+
+void DoubleLinkedList::insertAT(int position, int num)
+{
+	node* current= head;
+	node* previous = head;
+
+	node* temp = new node;
+	temp->next = NULL;
+	temp->previous = NULL;
+	temp->data = num;
+	
+	for (int i = 0; i < position - 1; i++) {
+		previous = current;
+		current = current->next;
+	}
+	previous->next = temp;
+	temp->next = current;
+	current->previous = temp;
+	temp->previous = previous;
+}
+
