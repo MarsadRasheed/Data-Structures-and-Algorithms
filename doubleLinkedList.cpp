@@ -121,3 +121,45 @@ void DoubleLinkedList::insertAT(int position, int num)
 	temp->previous = previous;
 }
 
+// function to get size of the array
+
+int DoubleLinkedList::sizeOfList(){
+	node* temp = head;
+	int count = 0;
+	while (temp != NULL){
+		count++;
+		temp = temp->next;
+	}
+	return count;
+}
+
+// function to delete element from head
+
+int DoubleLinkedList::deletionAtHead()
+{
+	int deleted = head->data;
+	head = head->next;
+	head->previous = NULL;
+	return deleted;;
+}
+
+// function to delete element from tail
+
+int DoubleLinkedList::deletionAtTail()
+{
+	int deleted = tail->data;
+
+	node* current = head;
+	node* previous = head;
+
+	while (current->next != NULL){
+		previous = current;
+		current = current->next;
+	}
+	current->next = NULL;
+	current->previous = NULL;
+	previous->next = NULL;
+	delete current;
+	tail = previous;
+	return deleted;
+}
