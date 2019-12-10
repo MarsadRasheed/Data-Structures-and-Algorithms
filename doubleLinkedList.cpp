@@ -163,3 +163,41 @@ int DoubleLinkedList::deletionAtTail()
 	tail = previous;
 	return deleted;
 }
+
+// deletion by position
+
+int DoubleLinkedList::deleteAt(int position)
+{
+	node* current = head;
+	node* previous = head;
+
+	for (int i = 0; i < position - 1; i++) {
+		previous = current;
+		current = current->next;
+	}
+	int deleted = current->data;
+	previous->next = current->next;
+	current->next->previous = previous;
+	delete current;
+	return deleted;
+}
+
+// deletion by value
+
+int DoubleLinkedList::deleteBy(int num)
+{
+	node* temp = head;
+	int deleted = 0;
+	while ( temp != NULL){
+		if (temp->data == num) {
+			deleted = temp->data;
+			temp->previous->next = temp->next;
+			temp->next->previous = temp->previous;
+			delete temp;
+			return deleted;
+		}
+		temp = temp->next;
+	}
+	return 0;
+}
+
