@@ -201,3 +201,46 @@ int DoubleLinkedList::deleteBy(int num)
 	return 0;
 }
 
+// function to reverse list
+
+void DoubleLinkedList::reverseList()
+{
+	node* next = NULL;
+	node* first = head;
+	node* previous = NULL;
+	node* current = head;
+
+	while (current != NULL){
+		next = current->next;
+		current->next = previous;
+		current->previous = next;
+		previous = current;
+		current = next;
+	}
+	head = previous;
+	tail = first;
+}
+
+// function to sort list
+
+void DoubleLinkedList::sortList()
+{
+	node* current = head->next;
+	node* previous = head;
+	
+	while (current != NULL){
+		previous = head;
+		while (previous != NULL){
+			if (previous->data > current->data) {
+				int temp = previous->data;
+				previous->data = current->data;
+				current->data = temp;
+			}
+			else{
+				previous = previous->next;
+			}
+		}
+		current = current->next;
+	}
+}
+
