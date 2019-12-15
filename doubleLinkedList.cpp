@@ -244,3 +244,47 @@ void DoubleLinkedList::sortList()
 	}
 }
 
+// function for sorting inseertion
+
+void DoubleLinkedList::insertSort(int num)
+{
+	node* current = head;
+	node* previous =  head;
+	node* temp = new node;
+	temp->next = NULL;
+	temp->previous = NULL;
+	temp->data = num;
+
+	while (current != NULL) {
+		previous = current;
+		current = current->next;
+		if (num >= previous->data && num <= current->data) {
+			temp->next = current;
+			current->previous = temp;
+			temp->previous = previous;
+			previous->next = temp;
+			return;
+		}
+	}
+}
+
+// driver function
+
+int main() {
+	DoubleLinkedList doubleLinkedList;
+	int num;
+	for (int i = 0; i < 10; i++) {
+		num = 1+rand()%50; 
+		doubleLinkedList.insertionAtHead(num);
+	}
+	doubleLinkedList.insertAT(3, 51);
+	doubleLinkedList.printList();
+	doubleLinkedList.sortList();
+	doubleLinkedList.insertSort(30);
+	doubleLinkedList.printList();
+	
+	cout << " num are : " << doubleLinkedList.sizeOfList();
+
+
+	system("pause");
+}
