@@ -38,3 +38,53 @@ int CircularLinkedList::lenghtof() {
 	}
 	return counter;
 }
+
+
+void CircularLinkedList::insert(int position, int num) {
+
+	node* current;
+	current = head;
+	
+	for (int i = 1; i < position - 2; i++) {
+		current = current->next;
+	}
+	node* next;
+	next = current->next;
+	node* temp = new node;
+	temp->data = num;
+	temp->previous = current;
+	temp->next = next;
+	current->next = temp;
+	next->previous = temp;
+}
+
+void CircularLinkedList::deletion(int num) {
+
+	node* start;
+	start = head;
+
+	node* last;
+	last = tail;
+
+	if (num == start->data) {
+		head = head->next;
+		head->previous = tail;
+		tail->next = head;
+		delete start;
+	}
+	else if( num == tail->data ){
+		tail = tail->previous;
+		tail->next = head;
+		delete last;
+	}
+	else{
+		while ( start != last )	{
+			if (start->data == num) {
+				start->previous->next = start->next;
+				start->next->previous = start->previous;
+			}
+			start = start->next;
+		}
+
+	}
+}
