@@ -88,3 +88,59 @@ void CircularLinkedList::deletion(int num) {
 
 	}
 }
+
+
+void CircularLinkedList::print() {
+
+	node* first;
+	first = head;
+
+	node* end;
+	end = tail;
+
+	while ( first != end ){
+		std::cout << first->data << "  ";
+		first = first->next;
+	}
+	std::cout << first->data;
+}
+
+void CircularLinkedList::insertionAtHead(int num) {
+	node* current;
+	current = head;
+
+	node* temp = new node;
+	temp->data = num;
+	temp->previous = tail;
+	temp->next = current;
+	current->previous = temp;
+	head = temp;
+}
+
+
+
+void CircularLinkedList :: insertionAtTail(int num) {
+
+	node* ptr;
+	ptr = head;
+
+	node* tptr;
+	tptr = tail;
+
+	node* temp = new node;
+	temp->data = num;
+	temp->next = head;
+	temp->previous = tail;
+
+	if (head == NULL) {
+		head = temp;
+		tail = temp;
+	}
+	else {
+		//temp->previous = tptr;
+		//temp->next = head;
+		tptr->next = temp;
+		ptr->previous = temp;
+		tail = temp;
+	}
+}
