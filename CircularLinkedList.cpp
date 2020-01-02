@@ -144,3 +144,91 @@ void CircularLinkedList :: insertionAtTail(int num) {
 		tail = temp;
 	}
 }
+
+void CircularLinkedList::insertionAt(int position, int num) {
+
+	node* current;
+	current = head;
+
+	node* last;
+	last = tail;
+
+	int i = 0;
+	int count = 1;
+
+	while (current->next != head)
+	{
+		count++;
+		current = current->next;
+	}
+
+	if (position == 1) {
+		insertionAtHead(num);
+		return;
+	}
+	else if (position < count + 2) {
+			if (position < count) {
+				// code for insertion at particular position.
+				for (i = 0; i < position-1; i++) {
+					current = current->next;
+				}
+				node* next;
+				next = current->next;
+				node* temp = new node;
+				temp->data = num;
+
+				temp->previous = current;
+				temp->next = next;
+				current->next = temp;
+				next->previous = temp;
+		}
+		else{
+			insertionAtTail(num);
+		}	
+	}
+	else
+	{
+		cout<<"\n" << num << " cannot added at position " << position << endl;
+		cout <<"coz your list length is " << count << "\n\n";
+	}
+}
+
+void CircularLinkedList::search(int num) {
+	node* first;
+	first = head;
+
+	node* end;
+	end = tail;
+
+	int index = 1;
+	int i = lenghtof();
+
+	if (num == end->data) {
+		print();
+		cout <<"\n"<< num << " is found at tail "  << i << endl;
+		return;
+	}
+
+	while (first->next != head) {
+		if (first->data == num) {
+			cout << num << " is found at " << index << endl;
+			return;
+		}
+		index++;
+		first = first->next;
+	}
+	cout << num << " number is not found at any index." << endl;
+}
+
+int main() {
+
+	CircularLinkedList cl;
+
+	cl.insertionAtHead(1);
+	cl.insertionAtHead(2);
+	//cl.insertionAtHead(3);
+	//cl.insertionAtHead(4);
+	cl.print();
+	cout << '\n';
+	system("pause");
+}
