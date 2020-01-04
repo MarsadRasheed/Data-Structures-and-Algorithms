@@ -31,6 +31,28 @@ public:
 
  };
  
+int LinkedList::getTailData() {
+	return tail->data;
+}
+
+void LinkedList::insertAtTail(int num) {
+
+	node* ptr;
+	ptr = head;
+
+	node* temp = new node;
+	temp->data = num;
+	temp->next = NULL;
+
+	if (head == NULL) {
+		head = temp;
+		tail = temp;
+	}
+	tail->next = temp;
+	temp->next = NULL;
+	tail = temp;
+}
+
 class Stack {
 	node* head;
 	LinkedList ll;
@@ -56,4 +78,17 @@ void Stack::top(){
 
 void Stack::printStack() {
 	ll.print();
+}
+
+int main() {
+
+	Stack stack;
+	stack.push(2);
+	stack.push(3);
+	stack.push(6);
+	stack.pop();
+	stack.printStack();
+	int top = stack.top();
+	system("pause");
+	
 }
