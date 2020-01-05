@@ -53,6 +53,42 @@ void LinkedList::insertAtTail(int num) {
 	tail = temp;
 }
 
+void LinkedList::deleteAtTail() {
+	node* temp;
+	temp = head;
+
+	node* current;
+	current = head;
+
+	while ( temp->next != NULL ){
+		current = temp;
+		temp = temp->next;
+	}
+	tail = current;
+	current->next = NULL;
+	delete temp;
+}
+
+void LinkedList::print() {
+
+	node* temp;
+	temp = head;
+
+	node* last;
+	last = tail;
+
+	if (head == NULL && tail == NULL) {
+		cout << "\nyour List is empty\n";
+	}
+	else {
+		while (temp != NULL) {
+			cout << temp->data << "  ";
+			temp = temp->next;
+		}
+	}
+}
+
+
 class Stack {
 	node* head;
 	LinkedList ll;
