@@ -1,0 +1,62 @@
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+class HashTable{
+private:
+
+	int size;
+	int* HashArray;
+	list<int> *Hash;
+
+public:
+
+	HashTable(int size) {
+		this->size = size;
+		Hash = new list<int>[size];
+		HashArray = new int[size];
+	}
+
+	int getKey(int data);
+	void insert(int data);
+	void displayHash();
+	void store(int k);
+	int hashIn(int k);
+	int hashAdd(int k, int i);
+	int hashLi(int k,int i);
+	void hashing(int k);
+	void quadHAshing(int k, int i);
+	int hashQa(int k, int i);
+	int hashQQ(int k, int i);
+
+};
+
+int HashTable::hashQQ(int h, int i) {
+	return ((h + i*i) % size);
+}
+
+
+int HashTable::hashQa(int k, int i) {
+	return (hashIn(k) + hashQQ(k, i) % size);
+}
+
+void HashTable::quadHAshing(int k, int i) {
+	int j = 0;
+	int hk = hashIn(k);
+	while (HashArray[hk] != NULL && i < size) {
+		hk = hashQa(k, j);
+		j++;
+	}
+	HashArray[hk];
+}
+
+void HashTable::hashing(int k) {
+	int hk = hashIn(k);
+	int i = 0;
+	while ( HashArray[hk] != NULL && i < size ) {
+		hk = hashLi(k, i);
+		i++;
+	}
+	HashArray[hk];
+}
