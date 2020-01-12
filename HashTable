@@ -60,3 +60,57 @@ void HashTable::hashing(int k) {
 	}
 	HashArray[hk];
 }
+
+int HashTable::hashLi(int k,int i) {
+	return ((hashIn(k) + hashAdd(k,i)) % size);
+}
+
+int HashTable::hashIn(int k) {
+	return k;
+}
+int HashTable::hashAdd(int k, int i) {
+	return (k + i) % size;
+}
+
+void HashTable::store(int k) {
+	int i = 0;
+	int hk = hashIn(k);
+	while (HashArray[hk] != NULL && i < size) {
+		hk = hashAdd(k, i);
+		i++;
+	}
+	HashArray[hk] = k;
+}
+
+int HashTable::getKey(int data) {
+	return (data % size);
+}
+
+void HashTable::insert(int data) {
+	int key = getKey(data);
+	Hash[key].push_back(data);
+}
+
+void HashTable::displayHash() {
+	for (int i = 0; i < size; i++) {
+		cout << i;
+		for (auto x : Hash[i]){
+			cout << " --> " << x;
+		}
+		cout << endl;
+	}
+}
+
+int main() {
+	int myarray[] = { 6,7,2,2,2,2,2,2,2,2,37,25,64 };
+	int siz = sizeof(myarray) / sizeof(myarray[0]);
+
+	HashTable h(5);
+
+	for (int i = 0; i < siz; i++) {
+		h.insert(myarray[i]);
+	}
+	
+	h.displayHash();
+	system("pause");
+}
